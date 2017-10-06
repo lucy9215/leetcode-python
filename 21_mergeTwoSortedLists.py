@@ -66,8 +66,8 @@ def strLinkedList(linkedList):
 def main():
     solution = Solution()
 
-    n1 = [5]
-    n2 = [4]
+    n1 = [1]
+    n2 = [1,2]
 
     l1 = linkedList(n1)
     l2 = linkedList(n2)
