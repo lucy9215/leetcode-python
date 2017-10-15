@@ -6,15 +6,22 @@
 #         self.right = None
 
 class Solution(object):
-    def isSameTree(self, p, q):
+    def isSymmetric(self, root):
         """
-        :type p: TreeNode
-        :type q: TreeNode
+        :type root: TreeNode
         :rtype: bool
         """
-        if p and q:
-            return p.val == q.val and self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
-        return p == q
+        def isSymTree(p,q):
+            if p and q:
+                return p.val==q.val and isSymTree(p.left,q.right) and isSymTree(p.right, q.left)
+            return p==q 
+        if root==None:
+            return True
+        p = root.left
+        q = root.right
+        return isSymTree(p,q)
+
+
 
 
 class TreeNode(object):
@@ -46,23 +53,15 @@ class Tree(object):
 def main():
     solution = Solution()
 
-    a = [1,2]
-    b = [1]
+    a = [1,2,2,None,3,3,None]
 
     atree = Tree(a)
-    btree = Tree(a)
 
     aroot = atree.root
-    broot = btree.root
 
-
-    print ('Output:', solution.isSameTree(aroot,broot))
+    print ('Output:', solution.isSymmetric(aroot))
 
 
 if __name__ == '__main__':
     main()
-
-
-
-
 

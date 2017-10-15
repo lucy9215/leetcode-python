@@ -6,15 +6,16 @@
 #         self.right = None
 
 class Solution(object):
-    def isSameTree(self, p, q):
+    def maxDepth(self, root):
         """
-        :type p: TreeNode
-        :type q: TreeNode
-        :rtype: bool
+        :type root: TreeNode
+        :rtype: int
         """
-        if p and q:
-            return p.val == q.val and self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
-        return p == q
+        if root:
+            d = 1 + max(self.maxDepth(root.left),self.maxDepth(root.right))
+        else:
+            d = 0
+        return d
 
 
 class TreeNode(object):
@@ -46,23 +47,14 @@ class Tree(object):
 def main():
     solution = Solution()
 
-    a = [1,2]
-    b = [1]
-
+    a = [1,2,2,None,3,3,None]
     atree = Tree(a)
-    btree = Tree(a)
-
     aroot = atree.root
-    broot = btree.root
 
-
-    print ('Output:', solution.isSameTree(aroot,broot))
+    print ('Output:', solution.maxDepth(aroot))
 
 
 if __name__ == '__main__':
     main()
-
-
-
 
 

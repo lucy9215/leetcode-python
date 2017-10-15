@@ -6,15 +6,23 @@
 #         self.right = None
 
 class Solution(object):
-    def isSameTree(self, p, q):
+    def levelOrderBottom(self, root):
         """
-        :type p: TreeNode
-        :type q: TreeNode
-        :rtype: bool
+        :type root: TreeNode
+        :rtype: List[List[int]]
         """
-        if p and q:
-            return p.val == q.val and self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
-        return p == q
+
+        res = []
+        self.dfs(root, 0, res)
+        return res
+    
+    def dfs(self, root, level, res):
+        if root:
+            if len(res) < level + 1:
+                res.insert(0, [])
+            res[-(level+1)].append(root.val)
+            self.dfs(root.left, level+1, res)
+            self.dfs(root.right, level+1, res)
 
 
 class TreeNode(object):
@@ -46,23 +54,14 @@ class Tree(object):
 def main():
     solution = Solution()
 
-    a = [1,2]
-    b = [1]
-
+    a = [3,9,20,None,None,15,7]
     atree = Tree(a)
-    btree = Tree(a)
-
     aroot = atree.root
-    broot = btree.root
 
-
-    print ('Output:', solution.isSameTree(aroot,broot))
+    print ('Output:', solution.levelOrderBottom(aroot))
 
 
 if __name__ == '__main__':
     main()
-
-
-
 
 
