@@ -10,13 +10,15 @@ class Solution(object):
         a = b = 1
         for i in range(n):
             a, b = b, a+b
+        # return a fibonacci(1,1,2,3,5...) indexed from 0, and return 0 when idex is 0. 
+        # i.e return a fibonacci(1,2,3,5...) indexed from 1. 
         return a 
 
 
 def main():
     solution = Solution()
 
-    a = 4
+    a = 1
 
     print ('Output:', solution.climbStairs(a))
 
