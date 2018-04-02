@@ -4,6 +4,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # Kadane's algorithm
         l = len(nums)
         if l > 0 :
             maxx = nums[0]
